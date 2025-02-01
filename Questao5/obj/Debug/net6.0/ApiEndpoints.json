@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "Questao5.Infrastructure.Services.Controllers.AccountController",
+    "Method": "Transacao",
+    "RelativePath": "Account/efetuar-transacao",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "transacao",
+        "Type": "Questao5.Application.Commands.Requests.TransacaoCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Questao5.Infrastructure.Services.Controllers.AccountController",
+    "Method": "Movimentacao",
+    "RelativePath": "Account/obter-extrato",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contaId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,14 @@
+E:\Testes\AMcom\Questao1\bin\Debug\net6.0\Questao1.exe
+E:\Testes\AMcom\Questao1\bin\Debug\net6.0\Questao1.deps.json
+E:\Testes\AMcom\Questao1\bin\Debug\net6.0\Questao1.runtimeconfig.json
+E:\Testes\AMcom\Questao1\bin\Debug\net6.0\Questao1.dll
+E:\Testes\AMcom\Questao1\bin\Debug\net6.0\Questao1.pdb
+E:\Testes\AMcom\Questao1\obj\Debug\net6.0\Questao1.GeneratedMSBuildEditorConfig.editorconfig
+E:\Testes\AMcom\Questao1\obj\Debug\net6.0\Questao1.AssemblyInfoInputs.cache
+E:\Testes\AMcom\Questao1\obj\Debug\net6.0\Questao1.AssemblyInfo.cs
+E:\Testes\AMcom\Questao1\obj\Debug\net6.0\Questao1.csproj.CoreCompileInputs.cache
+E:\Testes\AMcom\Questao1\obj\Debug\net6.0\Questao1.dll
+E:\Testes\AMcom\Questao1\obj\Debug\net6.0\refint\Questao1.dll
+E:\Testes\AMcom\Questao1\obj\Debug\net6.0\Questao1.pdb
+E:\Testes\AMcom\Questao1\obj\Debug\net6.0\Questao1.genruntimeconfig.cache
+E:\Testes\AMcom\Questao1\obj\Debug\net6.0\ref\Questao1.dll

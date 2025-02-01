@@ -1,0 +1,17 @@
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\Questao2.csproj.AssemblyReference.cache
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\Questao2.GeneratedMSBuildEditorConfig.editorconfig
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\Questao2.AssemblyInfoInputs.cache
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\Questao2.AssemblyInfo.cs
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\Questao2.csproj.CoreCompileInputs.cache
+E:\Testes\AMcom\Questao2\bin\Debug\net6.0\Questao2.exe
+E:\Testes\AMcom\Questao2\bin\Debug\net6.0\Questao2.deps.json
+E:\Testes\AMcom\Questao2\bin\Debug\net6.0\Questao2.runtimeconfig.json
+E:\Testes\AMcom\Questao2\bin\Debug\net6.0\Questao2.dll
+E:\Testes\AMcom\Questao2\bin\Debug\net6.0\Questao2.pdb
+E:\Testes\AMcom\Questao2\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\Questao2.csproj.Up2Date
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\Questao2.dll
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\refint\Questao2.dll
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\Questao2.pdb
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\Questao2.genruntimeconfig.cache
+E:\Testes\AMcom\Questao2\obj\Debug\net6.0\ref\Questao2.dll
