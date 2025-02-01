@@ -150,3 +150,4 @@ E:\Testes\AMcom\Questao5\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
 E:\Testes\AMcom\Questao5\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
 E:\Testes\AMcom\Questao5\bin\Debug\net6.0\Questao5.xml
 E:\Testes\AMcom\Questao5\obj\Debug\net6.0\Questao5.xml
+E:\Testes\AMcom\Questao5\obj\Debug\net6.0\Questao5.sourcelink.json

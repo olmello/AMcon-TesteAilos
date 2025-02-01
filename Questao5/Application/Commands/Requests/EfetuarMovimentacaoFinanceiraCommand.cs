@@ -1,35 +1,42 @@
 ﻿using FluentValidation;
 using Questao5.Core.Messages;
 using Questao5.Domain.Enumerators;
-using System.Text.Json;
 using Swashbuckle.AspNetCore.Filters;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 
 
 namespace Questao5.Application.Commands.Requests
 {
-    public class TransacaoCommand : Command
+    public class EfetuarMovimentacaoFinanceiraCommand : Command
     {
         /// <summary>
         /// Identificador único da transação, exemplo: 09003037-530B-4324-B9D2-4F6968728D14
         /// </summary>
+        [Required]
+        [MinLength(37)]
         public string TransacaoId { get; set; }
         /// <summary>
         /// Identificador da conta associada à transação, exemplo: BB1A2541-57C2-455A-9A57-277A8A7EF2B5
         /// </summary>
+        [Required]
+        [MinLength(37)]
         public string ContaId { get; set; }
         /// <summary>
         /// Valor total da transação, exemplo: 298.75
         /// </summary>
+        [Required]
         public double ValorTotal { get; set; }
         /// <summary>
         /// Tipo de movimento, exemplo: 'C' (Crédito), 'D'(Débito)
         /// </summary>
-        /// 
+        [Required]
+        [StringLength(1, MinimumLength = 1)]
         public string? TipoMovimento { get; set; }
 
         public override bool EhValido()
         {
-            ValidationResult = new TransacaoCommandValidation().Validate(this);
+            ValidationResult = new EfetuarMovimentacaoFinanceiraCommandValidation().Validate(this);
 
             return ValidationResult.IsValid;
         }
@@ -40,40 +47,32 @@ namespace Questao5.Application.Commands.Requests
         }
     }
 
-    public class TransacaoCommandValidation : AbstractValidator<TransacaoCommand>
+    public class EfetuarMovimentacaoFinanceiraCommandValidation : AbstractValidator<EfetuarMovimentacaoFinanceiraCommand>
     {
         private readonly int _min_length = 30;
         private readonly int _max_length = 37;
-        public TransacaoCommandValidation()
+        public EfetuarMovimentacaoFinanceiraCommandValidation()
         {
             RuleFor(c => c.TransacaoId)
                 .NotEmpty()
-                .WithMessage("{PropertyName} é requerido")
-                .Length(_min_length, _max_length)
-                .WithMessage("{PropertyName} inválido")
-                .WithName("Código da transacao");
+                .WithMessage(EStatusTransacao.INVALID_TOKEN.ToString())
+                .Length(_min_length, _max_length);
 
             RuleFor(c => c.ContaId)
                 .NotEmpty()
-                .WithMessage("{PropertyName} é requerido")
-                .Length(_min_length, _max_length)
-                .WithMessage("{PropertyName} inválido")
-                .WithName("Id da conta");
+                .WithMessage(EStatusTransacao.INVALID_ACCOUNT.ToString())
+                .Length(_min_length, _max_length);
 
             RuleFor(c => c.ValorTotal)
                 .NotNull()
-                .WithMessage("{PropertyName} é requerido")
                 .GreaterThan(0)
-                .WithMessage("O {PropertyName} precisa ser maior que {ComparisonValue}")
-                .WithName("Valor");
+                .WithMessage(EStatusTransacao.INVALID_VALUE.ToString());
 
             RuleFor(c => c.TipoMovimento)
                 .NotEmpty()
-                .WithMessage("{PropertyName} é requerido")
                 .When(c => !string.IsNullOrEmpty(c.TipoMovimento))
                 .Must(TransacaoValida)
-                .WithMessage("{PropertyName} inválido")
-                .WithName("Movimento");
+                .WithMessage(EStatusTransacao.INVALID_TYPE.ToString());
         }
 
         private bool TransacaoValida(string? movimento)
@@ -84,11 +83,11 @@ namespace Questao5.Application.Commands.Requests
         }
     }
 
-    public class TransacaoCommandExample : IExamplesProvider<TransacaoCommand>
+    public class EfetuarMovimentacaoFinanceiraCommandExample : IExamplesProvider<EfetuarMovimentacaoFinanceiraCommand>
     {
-        public TransacaoCommand GetExamples()
+        public EfetuarMovimentacaoFinanceiraCommand GetExamples()
         {
-            return new TransacaoCommand
+            return new EfetuarMovimentacaoFinanceiraCommand
             {
                 TransacaoId = Guid.NewGuid().ToString().ToUpper(),
                 ContaId = Guid.NewGuid().ToString().ToUpper(),

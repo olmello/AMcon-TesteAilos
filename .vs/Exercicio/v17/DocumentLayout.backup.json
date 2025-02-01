@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "E:\\Testes\\AMcom\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|e:\\testes\\amcom\\questao5\\infrastructure\\services\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|solutionrelative:questao5\\infrastructure\\services\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|e:\\testes\\amcom\\questao5\\domain\\contarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|solutionrelative:questao5\\domain\\contarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|e:\\testes\\amcom\\questao5\\application\\commands\\requests\\transacaocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|solutionrelative:questao5\\application\\commands\\requests\\transacaocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|e:\\testes\\amcom\\questao5\\domain\\idempotenciarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|solutionrelative:questao5\\domain\\idempotenciarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|e:\\testes\\amcom\\questao5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|solutionrelative:questao5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|e:\\testes\\amcom\\questao5\\setup\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|solutionrelative:questao5\\setup\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|e:\\testes\\amcom\\questao5\\questao5.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|solutionrelative:questao5\\questao5.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|e:\\testes\\amcom\\questao5\\setup\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B665AB7-6063-4EA5-A851-E41DBBE01242}|Questao5\\Questao5.csproj|solutionrelative:questao5\\setup\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,54 +34,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TransacaoCommand.cs",
-              "DocumentMoniker": "E:\\Testes\\AMcom\\Questao5\\Application\\Commands\\Requests\\TransacaoCommand.cs",
-              "RelativeDocumentMoniker": "Questao5\\Application\\Commands\\Requests\\TransacaoCommand.cs",
-              "ToolTip": "E:\\Testes\\AMcom\\Questao5\\Application\\Commands\\Requests\\TransacaoCommand.cs",
-              "RelativeToolTip": "Questao5\\Application\\Commands\\Requests\\TransacaoCommand.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAD4vyIAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "DatabaseService.cs",
+              "DocumentMoniker": "E:\\Testes\\AMcom\\Questao5\\Setup\\DatabaseService.cs",
+              "RelativeDocumentMoniker": "Questao5\\Setup\\DatabaseService.cs",
+              "ToolTip": "E:\\Testes\\AMcom\\Questao5\\Setup\\DatabaseService.cs",
+              "RelativeToolTip": "Questao5\\Setup\\DatabaseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T23:44:28.558Z",
+              "WhenOpened": "2025-02-01T18:35:29.773Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Questao5",
-              "DocumentMoniker": "E:\\Testes\\AMcom\\Questao5\\Questao5.csproj",
-              "RelativeDocumentMoniker": "Questao5\\Questao5.csproj",
-              "ToolTip": "E:\\Testes\\AMcom\\Questao5\\Questao5.csproj",
-              "RelativeToolTip": "Questao5\\Questao5.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-31T23:14:41.018Z",
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "E:\\Testes\\AMcom\\Questao5\\Setup\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Questao5\\Setup\\DependencyInjection.cs",
+              "ToolTip": "E:\\Testes\\AMcom\\Questao5\\Setup\\DependencyInjection.cs",
+              "RelativeToolTip": "Questao5\\Setup\\DependencyInjection.cs",
+              "ViewState": "AgIAAAwAAADAmZmZmdkiwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T18:11:47.437Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "E:\\Testes\\AMcom\\Questao5\\Infrastructure\\Services\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Questao5\\Infrastructure\\Services\\Controllers\\AccountController.cs",
-              "ToolTip": "E:\\Testes\\AMcom\\Questao5\\Infrastructure\\Services\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Questao5\\Infrastructure\\Services\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAwDIAAAA2AAAAAAAAAA==",
+              "Title": "ContaRepository.cs",
+              "DocumentMoniker": "E:\\Testes\\AMcom\\Questao5\\Domain\\ContaRepository.cs",
+              "RelativeDocumentMoniker": "Questao5\\Domain\\ContaRepository.cs",
+              "ToolTip": "E:\\Testes\\AMcom\\Questao5\\Domain\\ContaRepository.cs",
+              "RelativeToolTip": "Questao5\\Domain\\ContaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T22:52:00.017Z",
+              "WhenOpened": "2025-02-01T17:56:23.605Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Testes\\AMcom\\Questao5\\Program.cs",
-              "RelativeDocumentMoniker": "Questao5\\Program.cs",
-              "ToolTip": "E:\\Testes\\AMcom\\Questao5\\Program.cs",
-              "RelativeToolTip": "Questao5\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAABsAAAA8AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "IdempotenciaRepository.cs",
+              "DocumentMoniker": "E:\\Testes\\AMcom\\Questao5\\Domain\\IdempotenciaRepository.cs",
+              "RelativeDocumentMoniker": "Questao5\\Domain\\IdempotenciaRepository.cs",
+              "ToolTip": "E:\\Testes\\AMcom\\Questao5\\Domain\\IdempotenciaRepository.cs",
+              "RelativeToolTip": "Questao5\\Domain\\IdempotenciaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-31T22:43:15.755Z",
+              "WhenOpened": "2025-02-01T17:56:16.321Z",
               "EditorCaption": ""
             }
           ]

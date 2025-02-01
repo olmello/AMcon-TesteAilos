@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Questao5.Core.DomainObjects;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Questao5.Domain.Entities
@@ -20,6 +21,14 @@ namespace Questao5.Domain.Entities
             ChaveIdempotencia = chaveIdempotencia;
             Requisicao = requisicao;
             Resultado = resultado;
+
+            Validar();
+        }
+
+        private void Validar()
+        {
+            Validacoes.ValidarTamanho(ChaveIdempotencia, 33, 37, "Conta corrente inválida");
+            Validacoes.ValidarTamanho(Requisicao, 1, 1000, "Requisição inválida");
         }
     }
 }

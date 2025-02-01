@@ -20,15 +20,11 @@ namespace Questao5.Application.Handlers
 
         public async Task<bool> Handle(AdicionarTransacaoCommand command, CancellationToken cancellationToken)
         {
-            if (await _idempotenciaRepository.Existe(command.TransacaoId)) return false;
-
             return await _idempotenciaRepository.AdicionarAsync(new Idempotencia(command.TransacaoId, command.Requisicao));
         }
 
         public async Task<bool> Handle(AdicionarResultadoTransacaoCommand command, CancellationToken cancellationToken)
         {
-            if (!await _idempotenciaRepository.Existe(command.TransacaoId)) return false;
-
             return await _idempotenciaRepository.AtualizarAsync(new Idempotencia(command.TransacaoId, resultado: command.Resultado));
         }
 

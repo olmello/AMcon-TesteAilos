@@ -1,7 +1,6 @@
-﻿using Questao5.Core.Messages.CommonMessages.DomainEvents;
-using Questao5.Core.Messages.CommonMessages.Notifications;
+﻿using MediatR;
 using Questao5.Core.Messages;
-using MediatR;
+using Questao5.Core.Messages.CommonMessages.Notifications;
 
 namespace Questao5.Core.Communication.Mediator
 {
@@ -23,18 +22,9 @@ namespace Questao5.Core.Communication.Mediator
         {
             return await _mediator.Send((IRequest<TEntity>)comando);
         }
-
-        public async Task PublicarEvento<T>(T evento) where T : Event
-        {
-            await _mediator.Publish(evento);
-        }
+        
 
         public async Task PublicarNotificacao<T>(T notificacao) where T : DomainNotification
-        {
-            await _mediator.Publish(notificacao);
-        }
-
-        public async Task PublicarDomainEvent<T>(T notificacao) where T : DomainEvent
         {
             await _mediator.Publish(notificacao);
         }

@@ -1,35 +1,49 @@
 ﻿using Microsoft.Data.Sqlite;
+using Questao5.Core.Communication.Mediator;
+using Questao5.Core.Messages.CommonMessages.Notifications;
 using Questao5.Domain.Entities;
 using Questao5.Infrastructure.Database.QueryStore.Responses;
-using Questao5.Infrastructure.Sqlite;
-using System.Data;
+using Questao5.Setup;
 
 namespace Questao5.Domain
 {
     public class ContaRepository : IContaRepository
     {
-        private readonly IDbConnection _connection;
+        private IMediatorHandler _mediatorHandler;
+        private DatabaseService _databaseService;
 
-        public ContaRepository(DatabaseConfig databaseConfig)
+        public ContaRepository(DatabaseService databaseService, IMediatorHandler mediatorHandler)
         {
-            _connection = new SqliteConnection(databaseConfig.Name);
-            _connection.Open();
+            _databaseService = databaseService;
+            _databaseService.ConnectionOpen();
+            _mediatorHandler = mediatorHandler;
         }
 
         public async Task<bool> AdicionarAsync(Movimento movimento)
         {
-            string sql = @"INSERT INTO movimento (idmovimento, idcontacorrente, datamovimento, tipomovimento, valor) 
+            try
+            {
+                string sql = @"INSERT INTO movimento (idmovimento, idcontacorrente, datamovimento, tipomovimento, valor) 
                                           VALUES (@IdMovimento, @IdContaCorrente, @DataMovimento, @TipoMovimento, @Valor)";
 
-            using var command = new SqliteCommand(sql, (SqliteConnection)_connection);
+                using var command = _databaseService.ObterCommand(sql);
 
-            command.Parameters.AddWithValue("@IdMovimento", movimento.IdMovimento);
-            command.Parameters.AddWithValue("@IdContaCorrente", movimento.IdContaCorrente);
-            command.Parameters.AddWithValue("@DataMovimento", movimento.DataMovimento);
-            command.Parameters.AddWithValue("@TipoMovimento", movimento.TipoMovimento);
-            command.Parameters.AddWithValue("@Valor", movimento.Valor);
+                using var transaction = await _databaseService.ObterTransaction();
 
-            return await command.ExecuteNonQueryAsync() > 0;
+                command.Parameters.Add("@IdMovimento", SqliteType.Text).Value = movimento.IdMovimento;
+                command.Parameters.Add("@IdContaCorrente", SqliteType.Integer).Value = movimento.IdContaCorrente;
+                command.Parameters.Add("@DataMovimento", SqliteType.Text).Value = movimento.DataMovimento;
+                command.Parameters.Add("@TipoMovimento", SqliteType.Text).Value = movimento.TipoMovimento;
+                command.Parameters.Add("@Valor", SqliteType.Real).Value = movimento.Valor;
+
+                return await _databaseService.ExecutarComandoTransacaoAsync(command, transaction);
+            }
+            catch (Exception exception)
+            {
+                await _mediatorHandler.PublicarNotificacao(new DomainNotification("AdicionarAsync", exception.Message));
+
+                return false;
+            }
         }
 
         public async Task<ExtratoBancarioQuery> ObterExtratoPorContaId(string accountId)
@@ -50,52 +64,67 @@ namespace Questao5.Domain
                          LEFT JOIN MovimentoCalculado mc ON cc.idcontacorrente = mc.idcontacorrente
                          WHERE cc.idcontacorrente = @NumeroConta";
 
-            using var command = new SqliteCommand(sql, (SqliteConnection)_connection);
-
-            command.Parameters.AddWithValue("@NumeroConta", accountId.ToUpper());
-
-            using var reader = await command.ExecuteReaderAsync();
-
-            if (await reader.ReadAsync())
+            try
             {
-                return new ExtratoBancarioQuery
-                {
-                    NumeroConta = reader.GetInt32(0),
-                    NomeTitular = reader.GetString(1),
-                    DataExtrato = DateTime.Now.ToString("dd-MM-yyyy HH:mm"),
-                    SaldoAtual = reader.GetDouble(2)
-                };
-            }
+                using var command = _databaseService.ObterCommand(sql);
 
-            return null;
+                command.Parameters.Add("@NumeroConta", SqliteType.Text).Value = accountId.ToUpper();
+
+                using var reader = await command.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    return new ExtratoBancarioQuery
+                    {
+                        NumeroConta = reader.GetInt32(0),
+                        NomeTitular = reader.GetString(1),
+                        DataExtrato = DateTime.Now.ToString("dd-MM-yyyy HH:mm"),
+                        SaldoAtual = reader.GetDouble(2)
+                    };
+                }
+
+                return null;
+            }
+            catch (Exception exception)
+            {
+                await _mediatorHandler.PublicarNotificacao(new DomainNotification("ObterExtratoPorContaId", exception.Message));
+                return null;
+            }
         }
 
         public async Task<ContaCorrente> ObterContaPorId(string accountId)
         {
             string sql = "SELECT idcontacorrente, ativo FROM contacorrente WHERE idcontacorrente = @NumeroConta";
 
-            using var command = new SqliteCommand(sql, (SqliteConnection)_connection);
-
-            command.Parameters.AddWithValue("@NumeroConta", accountId.ToUpper());
-
-            using var reader = await command.ExecuteReaderAsync();
-
-            if (await reader.ReadAsync())
+            try
             {
-                return new ContaCorrente
-                {
-                    IdContaCorrente = reader.GetString(0),
-                    Ativo = reader.GetBoolean(1),
-                };
-            }
+                using var command = _databaseService.ObterCommand(sql);
 
-            return null;
+                command.Parameters.AddWithValue("@NumeroConta", accountId.ToUpper());
+
+                using var reader = await command.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    return new ContaCorrente
+                    {
+                        IdContaCorrente = reader.GetString(0),
+                        Ativo = reader.GetBoolean(1),
+                    };
+                }
+
+                return null;
+            }
+            catch (Exception exception)
+            {
+                await _mediatorHandler.PublicarNotificacao(new DomainNotification("ObterContaPorId", exception.Message));
+                return null;
+            }
         }
 
         public void Dispose()
         {
-            _connection?.Close();
-            _connection?.Dispose();
+            _databaseService.Dispose();
         }
     }
 }

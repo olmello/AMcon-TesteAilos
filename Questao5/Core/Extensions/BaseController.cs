@@ -23,18 +23,10 @@ namespace Questao5.Core.Extensions
         {
             if (OperacaoValida())
             {
-                return Ok(new
-                {
-                    success = true,
-                    data = result
-                });
+                return Ok(result);
             }
 
-            return BadRequest(new
-            {
-                success = false,
-                errors = ObterMensagensErro()
-            });
+            return BadRequest(ObterMensagensErro());
         }
 
         #region Notifications

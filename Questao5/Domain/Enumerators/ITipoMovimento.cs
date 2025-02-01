@@ -10,6 +10,7 @@
     public enum EStatusTransacao
     {
         INVALID_ACCOUNT,
+        INVALID_TOKEN,
         INACTIVE_ACCOUNT,
         INVALID_VALUE,
         INVALID_TYPE

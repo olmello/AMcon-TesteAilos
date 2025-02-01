@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Questao5.Core.DomainObjects;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Questao5.Domain.Entities
@@ -29,15 +30,24 @@ namespace Questao5.Domain.Entities
         public Movimento(string ContaCorrenteId, string tipoMovimento, double valor)
         {
             IdMovimento = Guid.NewGuid().ToString().ToUpper();
-            IdContaCorrente = ContaCorrenteId.ToUpper();
             DataMovimento = DateTime.Now;
+            IdContaCorrente = ContaCorrenteId.ToUpper();
             TipoMovimento = tipoMovimento.ToUpper();
             Valor = valor;
+
+            Validar();
+        }
+
+        private void Validar()
+        {
+            Validacoes.ValidarSeMenorQue(Valor, 0.1D, "O valor precisa ser no mínimo 1");
+            Validacoes.ValidarSeDiferente("^[CD]{1}$", TipoMovimento, "O TipoMovimento deve ser 'C' ou 'D'");
+            Validacoes.ValidarTamanho(IdContaCorrente, 33, 37, "Conta corrente inválida");
         }
 
         public override string ToString()
         {
-            return IdMovimento.ToString();
+            return IdMovimento;
         }
     }
 }

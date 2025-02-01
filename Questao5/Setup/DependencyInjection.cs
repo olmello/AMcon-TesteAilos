@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace Questao5.Setup
 {
-    public static class DependencyInjection
+    public static partial class DependencyInjection
     {
         public static void RegisterServices(this IServiceCollection services)
         {
@@ -17,6 +17,8 @@ namespace Questao5.Setup
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+
+            services.AddSingleton<DatabaseService>();
 
             services.AddScoped<IRequestHandler<ExisteTransacaoCommand, bool>, TransacaoIdempotenciaHandler>();
             services.AddScoped<IRequestHandler<AdicionarTransacaoCommand, bool>, TransacaoIdempotenciaHandler>();

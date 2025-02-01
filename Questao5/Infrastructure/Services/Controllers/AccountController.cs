@@ -24,13 +24,16 @@ namespace Questao5.Infrastructure.Services.Controllers
         /// <summary>
         /// Efetua uma transação em conta corrente do cliente, crédito ou débito
         /// </summary>
+        /// <description>
+        /// Teste
+        /// </description>
         /// <response code="200">Transação efetuada com sucesso</response>
         /// <response code="400">Ocorreu um problema, verificar a mensagem de erro</response>
         /// <response code="500">Não foi possível efetuar a transação no momento</response>
 
         [HttpPost]
         [Route("efetuar-transacao")]
-        public async Task<IActionResult> Transacao(TransacaoCommand transacao)
+        public async Task<IActionResult> Transacao(EfetuarMovimentacaoFinanceiraCommand transacao)
         {
             if (!ValidarComando(transacao)) return CustomResponse();
 

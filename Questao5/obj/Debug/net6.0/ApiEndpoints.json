@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "transacao",
-        "Type": "Questao5.Application.Commands.Requests.TransacaoCommand",
+        "Type": "Questao5.Application.Commands.Requests.EfetuarMovimentacaoFinanceiraCommand",
         "IsRequired": true
       }
     ],

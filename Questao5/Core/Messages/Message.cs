@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
 
 namespace Questao5.Core.Messages
 {
@@ -6,7 +7,6 @@ namespace Questao5.Core.Messages
     {
         [JsonIgnore]
         public string MessageType { get; protected set; }
-
         [JsonIgnore]
         public Guid AggregateId { get; protected set; }
 
