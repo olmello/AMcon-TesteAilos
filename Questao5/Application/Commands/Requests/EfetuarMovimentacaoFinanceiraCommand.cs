@@ -15,7 +15,7 @@ namespace Questao5.Application.Commands.Requests
         /// </summary>
         [Required]
         [MinLength(37)]
-        public string TransacaoId { get; set; }
+        public string RequisicaoId { get; set; }
         /// <summary>
         /// Identificador da conta associada à transação, exemplo: BB1A2541-57C2-455A-9A57-277A8A7EF2B5
         /// </summary>
@@ -53,26 +53,26 @@ namespace Questao5.Application.Commands.Requests
         private readonly int _max_length = 37;
         public EfetuarMovimentacaoFinanceiraCommandValidation()
         {
-            RuleFor(c => c.TransacaoId)
+            RuleFor(c => c.RequisicaoId)
                 .NotEmpty()
-                .WithMessage(EStatusTransacao.INVALID_TOKEN.ToString())
+                .WithMessage(EStatusRequisicao.INVALID_TOKEN.ToString())
                 .Length(_min_length, _max_length);
 
             RuleFor(c => c.ContaId)
                 .NotEmpty()
-                .WithMessage(EStatusTransacao.INVALID_ACCOUNT.ToString())
+                .WithMessage(EStatusRequisicao.INVALID_ACCOUNT.ToString())
                 .Length(_min_length, _max_length);
 
             RuleFor(c => c.ValorTotal)
                 .NotNull()
                 .GreaterThan(0)
-                .WithMessage(EStatusTransacao.INVALID_VALUE.ToString());
+                .WithMessage(EStatusRequisicao.INVALID_VALUE.ToString());
 
             RuleFor(c => c.TipoMovimento)
                 .NotEmpty()
                 .When(c => !string.IsNullOrEmpty(c.TipoMovimento))
                 .Must(TransacaoValida)
-                .WithMessage(EStatusTransacao.INVALID_TYPE.ToString());
+                .WithMessage(EStatusRequisicao.INVALID_TYPE.ToString());
         }
 
         private bool TransacaoValida(string? movimento)
@@ -89,7 +89,7 @@ namespace Questao5.Application.Commands.Requests
         {
             return new EfetuarMovimentacaoFinanceiraCommand
             {
-                TransacaoId = Guid.NewGuid().ToString().ToUpper(),
+                RequisicaoId = Guid.NewGuid().ToString().ToUpper(),
                 ContaId = Guid.NewGuid().ToString().ToUpper(),
                 ValorTotal = 150.75,
                 TipoMovimento = "C"

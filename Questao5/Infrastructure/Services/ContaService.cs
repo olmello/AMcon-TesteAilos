@@ -26,14 +26,14 @@ namespace Questao5.Infrastructure.Services
 
             if (conta == null) return string.Empty;
 
-            if (await ExisteTransacaoAsync(transacao.TransacaoId))
+            if (await ExisteTransacaoAsync(transacao.RequisicaoId))
             {
-                var resultado = await ObterResultadoTransacaoAsync(transacao.TransacaoId);
+                var resultado = await ObterResultadoTransacaoAsync(transacao.RequisicaoId);
                 if (!string.IsNullOrEmpty(resultado)) return resultado;
             }
             else
             {
-                await AdicionarTransacaoAsync(transacao.TransacaoId);
+                await AdicionarTransacaoAsync(transacao.RequisicaoId);
             }
 
             return await ProcessarMovimentoAsync(conta, transacao);
@@ -45,13 +45,13 @@ namespace Questao5.Infrastructure.Services
 
             if (conta == null)
             {
-                await _mediatorHandler.PublicarNotificacao(new DomainNotification(nameof(EfetuarTransacaoAsync), EStatusTransacao.INVALID_ACCOUNT.ToString()));
+                await _mediatorHandler.PublicarNotificacao(new DomainNotification(nameof(EfetuarTransacaoAsync), EStatusRequisicao.INVALID_ACCOUNT.ToString()));
                 return null;
             }
 
             if (!conta.Ativo)
             {
-                await _mediatorHandler.PublicarNotificacao(new DomainNotification(nameof(EfetuarTransacaoAsync), EStatusTransacao.INACTIVE_ACCOUNT.ToString()));
+                await _mediatorHandler.PublicarNotificacao(new DomainNotification(nameof(EfetuarTransacaoAsync), EStatusRequisicao.INACTIVE_ACCOUNT.ToString()));
                 return null;
             }
 
@@ -81,7 +81,7 @@ namespace Questao5.Infrastructure.Services
 
             if (sucesso)
             {
-                await _mediatorHandler.EnviarComando(new AdicionarResultadoTransacaoCommand(transacao.TransacaoId, movimento.IdMovimento.ToString()));
+                await _mediatorHandler.EnviarComando(new AdicionarResultadoTransacaoCommand(transacao.RequisicaoId, movimento.IdMovimento.ToString()));
                 return movimento.IdMovimento;
             }
 

@@ -30,7 +30,7 @@ namespace Questao5.Domain.Entities
         {
             Validacoes.ValidarTamanho(ChaveIdempotencia, 33, 37, "Conta corrente inválida");
 
-            Validacoes.ValidarTamanho(Requisicao, 1, 1000, "Requisição inválida");
+            if(!Requisicao.IsNullOrEmpty()) Validacoes.ValidarTamanho(Requisicao, 1, 1000, "Requisição inválida");
         }
     }
 }

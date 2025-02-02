@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Questao5.Tests
 {
-    public class MovimentoTests
+    public class ApiTests
     {
         [Fact]
         public void DeveCriarMovimentoCorretamente()
@@ -47,7 +47,7 @@ namespace Questao5.Tests
         {
             var (chaveIdempotencia, requisicao, resultado) = 
                 (Guid.NewGuid().ToString().ToUpper(), 
-                new EfetuarMovimentacaoFinanceiraCommand { ContaId = Guid.NewGuid().ToString(), TransacaoId = Guid.NewGuid().ToString() , TipoMovimento = "D", ValorTotal = 10.50 }.ToString(), 
+                new EfetuarMovimentacaoFinanceiraCommand { ContaId = Guid.NewGuid().ToString(), RequisicaoId = Guid.NewGuid().ToString() , TipoMovimento = "D", ValorTotal = 10.50 }.ToString(), 
                 string.Empty);
 
             Idempotencia movimento_substituto = Substitute.For<Idempotencia>(chaveIdempotencia, requisicao, resultado);

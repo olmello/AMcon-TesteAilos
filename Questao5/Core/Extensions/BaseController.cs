@@ -7,14 +7,17 @@ using Questao5.Core.Messages;
 namespace Questao5.Core.Extensions
 {
     [ApiController]
-    public class BaseController : ControllerBase
+    public class BaseController<T> : ControllerBase
     {
+        private readonly ILogger<T> _logger;
         private readonly IMediatorHandler _mediatorHandler;
         private readonly DomainNotificationHandler _notifications;
 
-        protected BaseController(IMediatorHandler mediatorHandler,
+        protected BaseController(ILogger<T> logger,
+                                 IMediatorHandler mediatorHandler,
                                  INotificationHandler<DomainNotification> notifications)
         {
+            _logger = logger;
             _mediatorHandler = mediatorHandler;
             _notifications = (DomainNotificationHandler)notifications;
         }
@@ -53,6 +56,14 @@ namespace Questao5.Core.Extensions
 
             return false;
         }
+        #endregion
+
+        #region Log
+        protected void LogInfo(string message) => _logger.LogInformation(message);
+
+        protected void LogError(string message) => _logger.LogError(message);
+
+        protected void LogWarning(string message) => _logger.LogWarning(message);
         #endregion
     }
 }

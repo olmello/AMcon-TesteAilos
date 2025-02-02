@@ -4,7 +4,7 @@
         <name>Questao5</name>
     </assembly>
     <members>
-        <member name="P:Questao5.Application.Commands.Requests.EfetuarMovimentacaoFinanceiraCommand.TransacaoId">
+        <member name="P:Questao5.Application.Commands.Requests.EfetuarMovimentacaoFinanceiraCommand.RequisicaoId">
             <summary>
             Identificador único da transação, exemplo: 09003037-530B-4324-B9D2-4F6968728D14
             </summary>

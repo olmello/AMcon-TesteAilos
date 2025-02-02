@@ -11,12 +11,13 @@ namespace Questao5.Infrastructure.Services.Controllers
 {
     [Route("[controller]")]
     [Consumes("application/json")]
-    public class AccountController : BaseController
+    public class AccountController : BaseController<AccountController>
     {
         private readonly IContaService _contaService;
         public AccountController(IContaService contaService,
+                                 ILogger<AccountController> logger,
                                  IMediatorHandler mediatorHandler,
-                                 INotificationHandler<DomainNotification> notifications) : base(mediatorHandler, notifications)
+                                 INotificationHandler<DomainNotification> notifications) : base(logger, mediatorHandler, notifications)
         {
                 _contaService = contaService;
         }
@@ -35,6 +36,8 @@ namespace Questao5.Infrastructure.Services.Controllers
         [Route("efetuar-transacao")]
         public async Task<IActionResult> Transacao(EfetuarMovimentacaoFinanceiraCommand transacao)
         {
+            //LogInfo("Movimentação não possui TransacaoId");
+
             if (!ValidarComando(transacao)) return CustomResponse();
 
             string movimentoId = await _contaService.EfetuarTransacaoAsync(transacao);

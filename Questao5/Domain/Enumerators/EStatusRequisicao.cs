@@ -1,13 +1,6 @@
 ﻿namespace Questao5.Domain.Enumerators
 {
-    public enum ETipoMovimento
-    {
-        INVALID_TYPE,
-        C = 1,
-        D
-    }
-
-    public enum EStatusTransacao
+    public enum EStatusRequisicao
     {
         INVALID_ACCOUNT,
         INVALID_TOKEN,
