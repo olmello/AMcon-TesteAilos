@@ -1,4 +1,5 @@
 ﻿using Questao5.Core.DomainObjects;
+using Questao5.Core.Extensions;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -28,6 +29,7 @@ namespace Questao5.Domain.Entities
         private void Validar()
         {
             Validacoes.ValidarTamanho(ChaveIdempotencia, 33, 37, "Conta corrente inválida");
+
             Validacoes.ValidarTamanho(Requisicao, 1, 1000, "Requisição inválida");
         }
     }

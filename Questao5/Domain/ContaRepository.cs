@@ -28,13 +28,13 @@ namespace Questao5.Domain
 
                 using var command = _databaseService.ObterCommand(sql);
 
-                using var transaction = await _databaseService.ObterTransaction();
-
                 command.Parameters.Add("@IdMovimento", SqliteType.Text).Value = movimento.IdMovimento;
                 command.Parameters.Add("@IdContaCorrente", SqliteType.Integer).Value = movimento.IdContaCorrente;
                 command.Parameters.Add("@DataMovimento", SqliteType.Text).Value = movimento.DataMovimento;
                 command.Parameters.Add("@TipoMovimento", SqliteType.Text).Value = movimento.TipoMovimento;
                 command.Parameters.Add("@Valor", SqliteType.Real).Value = movimento.Valor;
+
+                using var transaction = await _databaseService.ObterTransaction();
 
                 return await _databaseService.ExecutarComandoTransacaoAsync(command, transaction);
             }

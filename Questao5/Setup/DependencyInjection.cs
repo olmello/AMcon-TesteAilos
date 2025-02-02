@@ -18,7 +18,7 @@ namespace Questao5.Setup
 
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
 
-            services.AddSingleton<DatabaseService>();
+            services.AddScoped<DatabaseService>();
 
             services.AddScoped<IRequestHandler<ExisteTransacaoCommand, bool>, TransacaoIdempotenciaHandler>();
             services.AddScoped<IRequestHandler<AdicionarTransacaoCommand, bool>, TransacaoIdempotenciaHandler>();

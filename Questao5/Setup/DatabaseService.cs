@@ -24,12 +24,14 @@ namespace Questao5.Setup
 
         public SqliteCommand ObterCommand(string sql) => new(sql, (SqliteConnection)_connection);
 
-        public async Task<DbTransaction> ObterTransaction() => await ((SqliteConnection)_connection).BeginTransactionAsync();
+        public async Task<SqliteTransaction> ObterTransaction() => ((SqliteConnection)_connection).BeginTransaction();
 
-        public async Task<bool> ExecutarComandoTransacaoAsync(SqliteCommand command, DbTransaction transaction)
+        public async Task<bool> ExecutarComandoTransacaoAsync(SqliteCommand command, SqliteTransaction transaction)
         {
             try
             {
+                command.Transaction = transaction;
+
                 bool sucesso = await command.ExecuteNonQueryAsync() > 0;
 
                 if (sucesso) await transaction.CommitAsync();

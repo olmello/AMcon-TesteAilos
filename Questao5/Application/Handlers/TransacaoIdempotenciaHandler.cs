@@ -25,7 +25,7 @@ namespace Questao5.Application.Handlers
 
         public async Task<bool> Handle(AdicionarResultadoTransacaoCommand command, CancellationToken cancellationToken)
         {
-            return await _idempotenciaRepository.AtualizarAsync(new Idempotencia(command.TransacaoId, resultado: command.Resultado));
+            return await _idempotenciaRepository.AtualizarAsync(new Idempotencia(command.TransacaoId, ".", resultado: command.Resultado));
         }
 
         public async Task<bool> Handle(ExisteTransacaoCommand command, CancellationToken cancellationToken)
